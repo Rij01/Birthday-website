@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday | 2026 Edition</title>
+    
+    <!-- Tailwind CSS for Modern Styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- GSAP for Smooth Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #020617; /* Slate 950 */
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+        }
+
+        .neon-text {
+            text-shadow: 0 0 10px rgba(236, 72, 153, 0.5), 0 0 20px rgba(236, 72, 153, 0.3);
+        }
+
+        #heartCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .gradient-sphere {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, rgba(2, 6, 23, 0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(40px);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+    <!-- Background Elements -->
+    <canvas id="heartCanvas"></canvas>
+    <div class="gradient-sphere" style="top: -10%; left: -10%;"></div>
+    <div class="gradient-sphere" style="bottom: -10%; right: -10%;"></div>
+
+    <!-- Music Player Toggle -->
+    <div class="fixed top-6 right-6 z-50">
+        <button id="musicToggle" class="glass p-4 rounded-full hover:scale-110 transition-transform active:scale-95">
+            <i id="musicIcon" class="fas fa-music text-pink-500"></i>
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex flex-col items-center justify-center text-center px-4">
+        <div class="hero-content">
+            <span class="inline-block px-4 py-1 glass text-sm font-medium text-pink-400 mb-6 rounded-full tracking-widest uppercase">From your RIJ![MUNU]</span>
+            <h1 class="text-6xl md:text-8xl font-bold mb-6 tracking-tighter">
+                Happy Birthday to you Dear-, <br> <span class="text-pink-500 neon-text">MOON KHATUN.</span>
+            </h1>
+            <p class="text-slate-400 max-w-lg mx-auto text-lg leading-relaxed">
+                Belated happy birthday! Sorry for being late with the wishes. I hope your special day was filled with love, laughter, and all your favorite things.
+            </p>
+        </div>
+        <div class="mt-12 animate-bounce opacity-50">
+            <i class="fa-solid fa-chevron-down text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- Content Grid (Bento Style) -->
+    <section class="max-w-6xl mx-auto px-6 py-24 grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Card 1 -->
+        <div class="glass p-8 md:col-span-2 reveal-card">
+            <i class="fa-solid fa-heart text-pink-500 text-3xl mb-4"></i>
+            <h3 class="text-2xl font-bold mb-4 text-white">The Spark</h3>
+            <p class="text-slate-400 leading-relaxed">
+               Wishing you a birthday that's as wonderful and amazing as you are.
+            </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="glass p-8 reveal-card">
+            <i class="fa-solid fa-star text-yellow-400 text-3xl mb-4"></i>
+            <h3 class="text-2xl font-bold mb-4 text-white">2026 Vision</h3>
+            <p class="text-slate-400 leading-relaxed text-sm">
+                In this futuristic year, I promise to keep upgrading our love, debugging our bad days, and celebrating every millisecond of your existence.
+            </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="glass p-8 reveal-card">
+            <h3 class="text-4xl font-bold text-pink-500 mb-2">365</h3>
+            <p class="text-slate-300 font-medium">New Opportunities</p>
+            <p class="text-slate-500 text-xs mt-4">Every day is a fresh start to build the future we always talked about.</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="glass p-8 md:col-span-2 reveal-card flex flex-col justify-center bg-gradient-to-br from-pink-500/10 to-transparent">
+            <h3 class="text-2xl font-bold mb-4 italic font-serif">"You are the poem I never knew how to write."</h3>
+            <p class="text-slate-400">— Anonymous</p>
+        </div>
+    </section>
+
+    <!-- Footer Message -->
+    <section class="py-32 text-center">
+        <h2 class="text-4xl font-bold mb-8 reveal-text">Ready for your gift?</h2>
+        <a href="mailto:your-email@example.com" class="px-8 py-4 bg-pink-600 hover:bg-pink-500 rounded-full font-bold transition-all transform hover:scale-105 shadow-lg shadow-pink-500/20">
+            Open Message <i class="fa-solid fa-envelope ml-2"></i>
+        </a>
+        <p class="mt-12 text-slate-600 text-sm italic">Designed for you with ✨ Gemini AI</p>
+    </section>
+
+    <!-- Audio Element (Lo-fi Background) -->
+    <!-- Replace with your own MP3 link -->
+    <audio id="bgMusic" loop>
+        <source src="https://www.chosic.com/wp-content/uploads/2021/07/Lofi-Study-Chill.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // --- 1. Floating Hearts Canvas ---
+        const canvas = document.getElementById('heartCanvas');
+        const ctx = canvas.getContext('2d');
+        let hearts = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Heart {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + Math.random() * 100;
+                this.size = Math.random() * 15 + 5;
+                this.speed = Math.random() * 1 + 0.5;
+                this.opacity = Math.random() * 0.5 + 0.2;
+            }
+            draw() {
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = '#ec4899';
+                ctx.beginPath();
+                ctx.moveTo(this.x, this.y);
+                ctx.bezierCurveTo(this.x - this.size / 2, this.y - this.size / 2, this.x - this.size, this.y + this.size / 3, this.x, this.y + this.size);
+                ctx.bezierCurveTo(this.x + this.size, this.y + this.size / 3, this.x + this.size / 2, this.y - this.size / 2, this.x, this.y);
+                ctx.fill();
+            }
+            update() {
+                this.y -= this.speed;
+                if (this.y < -20) this.y = canvas.height + 20;
+            }
+        }
+
+        function initHearts() {
+            for (let i = 0; i < 25; i++) {
+                hearts.push(new Heart());
+            }
+        }
+
+        function animateHearts() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            hearts.forEach(h => {
+                h.update();
+                h.draw();
+            });
+            requestAnimationFrame(animateHearts);
+        }
+        initHearts();
+        animateHearts();
+
+        // --- 2. GSAP Animations ---
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Animation
+        gsap.from(".hero-content", {
+            duration: 1.5,
+            y: 50,
+            opacity: 0,
+            ease: "power4.out"
+        });
+
+        // Card Revelations
+        gsap.utils.toArray(".reveal-card").forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 85%",
+                },
+                y: 60,
+                opacity: 0,
+                duration: 1,
+                delay: i * 0.1,
+                ease: "power3.out"
+            });
+        });
+
+        // --- 3. Music Controls ---
+        const music = document.getElementById('bgMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        const musicIcon = document.getElementById('musicIcon');
+        let isPlaying = false;
+
+        musicToggle.addEventListener('click', () => {
+            if (isPlaying) {
+                music.pause();
+                musicIcon.className = "fas fa-music text-pink-500 opacity-50";
+            } else {
+                music.play();
+                musicIcon.className = "fas fa-volume-up text-pink-500 animate-pulse";
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // Parallax effect for mouse
+        document.addEventListener("mousemove", (e) => {
+            const x = (e.clientX / window.innerWidth) - 0.5;
+            const y = (e.clientY / window.innerHeight) - 0.5;
+            gsap.to(".gradient-sphere", {
+                x: x * 50,
+                y: y * 50,
+                duration: 2,
+                ease: "power2.out"
+            });
+        });
+    </script>
+</body>
+</html>
